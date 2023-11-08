@@ -1,10 +1,12 @@
 <template>
+  <!-- 刷新按钮 -->
   <el-button
     size="small"
     icon="Refresh"
     circle
     @click="updateRefsh"
   ></el-button>
+  <!-- 全屏按钮 -->
   <el-button
     size="small"
     icon="FullScreen"
