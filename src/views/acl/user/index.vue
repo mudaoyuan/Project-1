@@ -332,19 +332,19 @@ const cancel = () => {
 //校验用户名字回调函数
 const validatorUsername = (rule: any, value: any, callBack: any) => {
   //用户名字|昵称,长度至少五位
-  if (value.trim().length >= 3) {
+  if (value.trim().length >= 5) {
     callBack()
   } else {
-    callBack(new Error('用户名字至少三位'))
+    callBack(new Error('用户名字至少五位'))
   }
 }
 //校验用户名字回调函数
 const validatorname = (rule: any, value: any, callBack: any) => {
   //用户名字|昵称,长度至少五位
-  if (value.trim().length >= 3) {
+  if (value.trim().length >= 5) {
     callBack()
   } else {
-    callBack(new Error('用户昵称至少三位'))
+    callBack(new Error('用户昵称至少五位'))
   }
 }
 const validatorPassword = (rule: any, value: any, callBack: any) => {

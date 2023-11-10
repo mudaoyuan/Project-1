@@ -25,7 +25,6 @@ router.beforeEach(async (to: any, from: any, next: any) => {
   let token = userStore.token
   let username = userStore.username
   if (token) {
-    console.log(token)
     //用户已登录
     if (to.path == '/login') {
       next({ path: '/' })

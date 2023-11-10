@@ -71,7 +71,7 @@
       <el-pagination
         @size-change="sizeChange"
         @current-change="getHasTrademark"
-        pager-count="9"
+        :pager-count="9"
         v-model:current-page="pageNo"
         v-model:page-size="limit"
         :page-sizes="[3, 5, 7, 9]"

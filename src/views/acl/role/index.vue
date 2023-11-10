@@ -82,7 +82,7 @@
     <el-pagination
       v-model:current-page="pageNo"
       v-model:page-size="pageSize"
-      :page-sizes="[3, 5, 7, 10]"
+      :page-sizes="[5, 7, 10]"
       :background="true"
       layout="prev, pager, next, jumper,->,sizes,total"
       :total="total"
@@ -160,7 +160,7 @@ let settingStore = useLayOutSettingStore()
 //当前页码
 let pageNo = ref<number>(1)
 //一页展示几条数据
-let pageSize = ref<number>(3)
+let pageSize = ref<number>(5)
 //搜索职位关键字
 let keyword = ref<string>('')
 //存储全部已有的职位

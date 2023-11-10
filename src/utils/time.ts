@@ -13,5 +13,4 @@ export const getTime = () => {
     message = '晚上'
   }
   return message
-  console.log(message)
 }
