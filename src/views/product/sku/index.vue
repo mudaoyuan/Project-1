@@ -46,7 +46,7 @@
             type="primary"
             size="small"
             icon="Edit"
-            @click="updateSku"
+            @click="updateSku(row)"
           ></el-button>
           <el-button
             type="primary"
@@ -77,8 +77,42 @@
       :total="total"
     />
   </el-card>
+  <!-- 抽屉组件：更新商品详情 -->
+  <el-drawer v-model="drawer1">
+    <template #header>
+      <h4>更新SKU</h4>
+    </template>
+    <template #default>
+      <el-form :model="SkuProms">
+        <el-form-item prop="skuName" label="SKU名称">
+          <el-input v-model="SkuProms.skuName"></el-input>
+        </el-form-item>
+        <el-form-item prop="skuDesc" label="SKU描述">
+          <el-input v-model="SkuProms.skuDesc"></el-input>
+        </el-form-item>
+        <el-form-item prop="skuDefaultImg" label="SKU图片">
+          <img
+            :src="SkuProms.skuDefaultImg"
+            style="width: 200px; height: 200px"
+          />
+        </el-form-item>
+        <el-form-item prop="weight" label="SKU重量">
+          <el-input v-model="SkuProms.weight"></el-input>
+        </el-form-item>
+        <el-form-item prop="price" label="SKU价格">
+          <el-input v-model="SkuProms.price"></el-input>
+        </el-form-item>
+      </el-form>
+    </template>
+    <template #footer>
+      <div style="flex: auto">
+        <el-button @click="cancel">取消</el-button>
+        <el-button type="primary">确定</el-button>
+      </div>
+    </template>
+  </el-drawer>
   <!-- 抽屉组件：展示商品详情 -->
-  <el-drawer v-model="drawer">
+  <el-drawer v-model="drawer" :with-header="false">
     <el-row style="margin: 10px 0px">
       <el-col :span="6">名称</el-col>
       <el-col :span="18">{{ skuInfo.skuName }}</el-col>
@@ -124,7 +158,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, reactive } from 'vue'
 //引入请求
 import {
   reqCancelSale,
@@ -148,6 +182,7 @@ let total = ref<number>(0)
 let skuArr = ref<SkuData[]>([])
 //控制抽屉显示与隐藏的字段
 let drawer = ref<boolean>(false)
+let drawer1 = ref<boolean>(false)
 //查看商品详情按钮的回调
 let skuInfo = ref<any>({})
 const findSku = async (row: SkuData) => {
@@ -158,6 +193,13 @@ const findSku = async (row: SkuData) => {
   //存储已有的SKU
   skuInfo.value = res.data
 }
+let SkuProms = reactive<SkuData>({
+  skuName: '',
+  skuDesc: '',
+  skuDefaultImg: '',
+  weight: '',
+  price: '',
+})
 //组件挂载完毕
 onMounted(() => {
   getHasSku()
@@ -196,8 +238,9 @@ const updateSale = async (row: SkuData) => {
   }
 }
 //更新已有的SKU
-const updateSku = () => {
-  ElMessage({ type: 'success', message: '程序员在努力的更新中....' })
+const updateSku = (row: any) => {
+  drawer1.value = true
+  Object.assign(SkuProms, row)
 }
 //删除某一个已有的商品
 const removeSku = async (id: number) => {
@@ -212,6 +255,9 @@ const removeSku = async (id: number) => {
     //删除失败
     ElMessage({ type: 'error', message: '系统数据不能删除' })
   }
+}
+const cancel = () => {
+  drawer1.value = false
 }
 </script>
 
