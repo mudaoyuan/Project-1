@@ -85,10 +85,10 @@
     <template #default>
       <el-form :model="SkuProms">
         <el-form-item prop="skuName" label="SKU名称">
-          <el-input v-model="SkuProms.skuName"></el-input>
+          <el-input type="textarea" v-model="SkuProms.skuName"></el-input>
         </el-form-item>
         <el-form-item prop="skuDesc" label="SKU描述">
-          <el-input v-model="SkuProms.skuDesc"></el-input>
+          <el-input type="textarea" v-model="SkuProms.skuDesc"></el-input>
         </el-form-item>
         <el-form-item prop="skuDefaultImg" label="SKU图片">
           <img
