@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <img src="../../assets/images/error_images/404.png" alt="" />
-    <button @click="goHome">首页</button>
+    <button @click="goHome">返回首页</button>
   </div>
 </template>
 
@@ -18,14 +18,16 @@ const goHome = () => {
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   img {
-    width: 800px;
-    height: 400px;
+    width: 1600px;
+    height: 600px;
+    margin-left: 400px;
   }
   button {
-    width: 50px;
+    width: 100px;
     height: 50px;
+    margin-left: 700px;
   }
 }
 </style>
