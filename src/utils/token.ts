@@ -11,3 +11,10 @@ export const GET_TOKEN = () => {
 export const REMOVE_TOKEN = () => {
   sessionStorage.removeItem('TOKEN')
 }
+
+//清除空白符
+export const Trim = (str: string) => {
+  if (str && typeof str === 'string') {
+    return str.replace(/(^\s*)|(\s*)$/g, '')
+  }
+}
